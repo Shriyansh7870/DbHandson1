@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1 class="Database">Database</h1>
+    <h2>
+      1: Create a database , give it name like ""Human_Resource"". Create a
+      collection inside this named ""employee""?</h2>
+      <br />
+      <p>Ans: db.employee.insertMany([{}])</p>
+      <p>
+        acknowledged: true,
+        insertedIds:
+          '0': ObjectId("65452aa6a2fac34a56c5ed85"),
+          '1': ObjectId("65452aa6a2fac34a56c5ed86"),
+          '2': ObjectId("65452aa6a2fac34a56c5ed87"),
+          '3': ObjectId("65452aa6a2fac34a56c5ed88"),
+          '4': ObjectId("65452aa6a2fac34a56c5ed89"),
+          '5': ObjectId("65452aa6a2fac34a56c5ed8a"),
+          '6': ObjectId("65452aa6a2fac34a56c5ed8b"),
+          '7': ObjectId("65452aa6a2fac34a56c5ed8c"),
+          '8': ObjectId("65452aa6a2fac34a56c5ed8d"),
+          '9': ObjectId("65452aa6a2fac34a56c5ed8e"),
+          '10': ObjectId("65452aa6a2fac34a56c5ed8f"),
+          '11': ObjectId("65452aa6a2fac34a56c5ed90"),
+          '12': ObjectId("65452aa6a2fac34a56c5ed91")</p>
+          </p>
+    
+    <br>
+    <h2>2.Query the collection ""employee"" and list the employees who are having salary more than 30000</h2>
+    <br>
+    <p>Ans: db.employee.find({ salary: { $gt: "30000" } })</p>
+    <br>
+    <p> _id: ObjectId("65452aa6a2fac34a56c5ed87"),
+        firstName: 'Jame',
+        lastName: 'Doe',
+        salary: '35000',
+        department: 'Accounts',
+        lastCompany: 'Z',
+        lastSalary: '20000',
+        overallExp: '1',
+        contactInfo: '123567890',
+        yearGrad: '2019',
+        gradStream: 'ECE'
+      </p>
+      <h4>Similar output come on this query.</h4>
+      <br>
+      <h2>3.Query the collection ""employee"" and list the employees who are having experience more than 2 years.</h2>
+      <br>
+      <p>Ans:db.employee.find({ overallExp:  "2" } )</p>
+      <p>{
+        _id: ObjectId("65452aa6a2fac34a56c5ed85"),
+        firstName: 'John',
+        lastName: 'Doe',
+        salary: '25000',
+        department: 'HR',
+        lastCompany: 'X',
+        lastSalary: '10000',
+        overallExp: '2',
+        contactInfo: '1234567890',
+        yearGrad: '2016',
+        gradStream: 'CSE'
+      }</p>
+      <h4>Similar output come on this query.</h4>
+      <br>
+      <h2>4.Query the collection ""employee"" and list the employees who are graduated after 2015 and having experience more than 1 year </h2>
+      <br>
+      <p>Ans:db.employee.find({
+        $and: [
+          { yearGrad: { $gt: "2015" } },
+          { overallExp: { $gt: "1" } }
+        ]
+      })</p>
+      <p>{
+        _id: ObjectId("65452aa6a2fac34a56c5ed85"),
+        firstName: 'John',
+        lastName: 'Doe',
+        salary: '25000',
+        department: 'HR',
+        lastCompany: 'X',
+        lastSalary: '10000',
+        overallExp: '2',
+        contactInfo: '1234567890',
+        yearGrad: '2016',
+        gradStream: 'CSE'
+      }</p>
+      <h4>Similar output come on this query.</h4>
+      <h2>5.Query the collection ""employee"" and update the salary of the employee whose salary is greater than 70000 to 65000.</h2>
+      <br>
+      <p>Ans:db.employee.updateMany(
+        {
+      salary: { $gt: "70000" } },
+        { $set: { salary: "65000" } }
+      )</p>{
+      <p> _id: ObjectId("65452aa6a2fac34a56c5ed85"),
+        firstName: 'John',
+        lastName: 'Doe',
+        salary: '70000',
+        department: 'HR',
+        lastCompany: 'X',
+        lastSalary: '10000',
+        overallExp: '2',
+        contactInfo: '1234567890',
+        yearGrad: '2016',
+        gradStream: 'CSE'
+      }</p>
+      <br>
+      <h2>6.Delete all the documents from ""employee"" where last company is Y"
+      </h2>
+      <br>
+      <p>db.employee.deleteMany({ lastCompany: "Y" })</p>
+      <p>{
+        acknowledged: true,
+        deletedCount: 6
+      }</p>
+  </body>
+</html>
